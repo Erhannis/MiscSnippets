@@ -1,0 +1,103 @@
+adb shell dumpsys activity activities
+git log -p <filename>
+-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=4000
+wget http://ipinfo.io/ip -qO -
+xwininfo -d :0 -tree -root
+dd if=/dev/zero ibs=1k count=100 | tr "\000" "\377" > paddedFile.bin
+python -m SimpleHTTPServer [PORT]
+watch -n 0.1 cat /proc/sys/kernel/random/entropy_avail
+jarsigner -keystore ~/.android/debug.keystore -verbose unsigned.apk androiddebugkey
+avahi-browse -a -k
+amixer sset 'Capture',0 32000
+dpkg -S PROGRAM
+/var/log/dpkg.log
+ffmpeg -protocol_whitelist file,http,https,tcp,tls -i my_movie.m3u8 -c copy my_movie.ts
+
+
+
+gsettings set org.gnome.desktop.session idle-delay "uint32 3000"
+type FILE - show how bash interprets it (i.e., find location)
+find -exec cat {} \;
+find -exec sh -c 'echo -n "$0: " ; cat "$0" ; echo ' {} \;
+find -iname "*.mp4" -execdir ffmpeg -i {} -vf scale=iw*.25:ih*.25 ../resized/{} \;
+find -iname "*.jpg" -execdir convert {} -resize 20% ../new_jpg_resized/{} \;
+ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4   (mylist.txt: file /path/to/file3 \n file blah etc.)
+rename 's/(.*)/small_$1/' *
+dpkg -L PKG - show files in package
+dpkg -S FILE - show package containing file
+ln -s TARGET NEW_LINK_FILE - I KEEP FORGETTING THE ORDER
+convert -monitor -gravity NorthEast 'dirfrom/Sketchbook-8-1-*' -crop 3729x4928+0+0 dirto/Sketchbook-8-1-%02d.jpg
+jwplayer("player_holder").getConfig().file
+rtmpdump -r rtmp://198.27.85.197:1935/golive/?undefined/Stickaroo -o test.flv
+mvn dependency:get -DrepoUrl=something -Dartifact=group:artifact:version
+mvn install:install-file -Dfile=<path-to-file> -DgroupId=<group-id> -DartifactId=<artifact-id> -Dversion=<version> -Dpackaging=jar
+adb shell du -xchs /sdcard/DCIM/Camera/* | sort -h
+xprop _NET_WM_PID | cut -d' ' -f3    #then click a window to show pid
+find -iname "*.flac" -execdir ffmpeg -i {} -ab 196k -ac 2 -ar 48000 {}.mp3 \;
+find -maxdepth 2 -exec grep -H -s "thing" {} \;
+./avrdude -p atmega2560 -C ../etc/avrdude.conf -c stk500v2 -P /dev/ttyACM3 -b 115200 -F -D -U flash:w:/home/erhannis/projects/snappy-reprap/firmware/MarlinRampsRRDFullGraphicSmartCntrlrNoHBP.hex
+swapoff -a
+swapon -a
+udisksctl mount -b /dev/sdb1  # mounts drive like from nautilus
+curl $1 | grup -u $'(href=|src=)"[^"]*"'
+
+(gdb)
+attach 3051
+call open("/home/erhannis/newlogfile.log", 66, 0666)
+call dup2($1,0)
+call dup2($1,1)
+call close($1)
+detach
+quit
+
+prints nothing: (cat nonexistent 3>&1 1>&2 2>&3) > /dev/null
+prints error:   cat nonexistent 3>&1 1>&2 2>&3 > /dev/null
+
+// Check for broken links (or non-archived links, in this example)
+let broken = [];
+let working = [];
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+async function checkBroken() {
+  for (let i = 1; i <= 159; i++) {
+    let url = "https://web.archive.org/web/20210130004318/http://difference.thecomicseries.com/comics/" + i;
+    try {
+      let f = await fetch(url);
+      if (f.status != 200) {
+        broken.push(url);
+      } else {
+        working.push(url);
+      }
+    } catch (err) {
+      broken.push(url);
+      console.log("err ", err);
+    }
+    await sleep(10000);
+  }
+}
+
+
+
+
+Java
+----
+javadoc - {@link #clearChars(char[])}
+
+
+
+
+Cryptography
+----
+keytool -genkey -keyalg RSA -alias server -keystore server.ks -validity 1000 -keysize 4096
+
+keytool -export -keystore server.ks -alias server -file server.cer
+keytool -import -file server.cer -alias server -keystore server.ts
+
+
+Bash
+----
+mv `ls -tr | tail -n 3` ~/wherever/
+lsb_release -a
+cat /etc/os-release
+while true; do ./start.sh ; done
