@@ -101,3 +101,33 @@ mv `ls -tr | tail -n 3` ~/wherever/
 lsb_release -a
 cat /etc/os-release
 while true; do ./start.sh ; done
+readlink -f file.fil # get absolute path
+cat TODO.txt | sed "s/.*/before & after/"
+
+
+Fixes
+----
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+
+
+
+CSP
+---
+Precedents
+  Buffer distal channels
+    ...Or, ensure the important process cannot be blocked by the less important process
+
+
+Unsorted
+----
+ffmpeg -ss 00:00:00 -to 00:01:40 -i 20220122_015300.mp4 heater_problem.mp4
+gradle pg:test --info --tests org.spongycastle.gpg*
+mvn install:install-file
+    -Dfile=awesomeapp-1.0.1.jar \
+    -DpomFile=awesomeapp-1.0.1.pom \
+    -Dsources=awesomeapp-1.0.1-sources.jar \
+    -Djavadoc=awesomeapp-1.0.1-javadoc.jar \
+    -DgroupId=com.example \
+    -DartifactId=awesomeapp \
+    -Dversion=1.0.1 \
+    -Dpackaging=jar
