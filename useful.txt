@@ -83,8 +83,11 @@ async function checkBroken() {
 Java
 ----
 javadoc - {@link #clearChars(char[])}
-
-
+javadoc - {@link com.whatever.Classname#clearChars(char[])}
+update-java-alternatives
+jstack -l JAVA_PID // Dump threads
+mvn compile exec:java -Dexec.mainClass="com.baeldung.main.Exec"
+java -cp . Main
 
 
 Cryptography
@@ -103,6 +106,8 @@ cat /etc/os-release
 while true; do ./start.sh ; done
 readlink -f file.fil # get absolute path
 cat TODO.txt | sed "s/.*/before & after/"
+find -name 'pom.xml' | xargs sed -i s/\>Bouncy/\>Spongy/g
+find -type f -printf '"%p"\n' | xargs sed -i s/-Werror/-Wno-error/g
 
 
 Fixes
@@ -122,7 +127,7 @@ Unsorted
 ----
 ffmpeg -ss 00:00:00 -to 00:01:40 -i 20220122_015300.mp4 heater_problem.mp4
 gradle pg:test --info --tests org.spongycastle.gpg*
-mvn install:install-file
+mvn install:install-file \
     -Dfile=awesomeapp-1.0.1.jar \
     -DpomFile=awesomeapp-1.0.1.pom \
     -Dsources=awesomeapp-1.0.1-sources.jar \
@@ -131,3 +136,8 @@ mvn install:install-file
     -DartifactId=awesomeapp \
     -Dversion=1.0.1 \
     -Dpackaging=jar
+System.out.println(new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec("pwd").getInputStream())).readLine());
+docker search IMAGE
+docker create IMAGE
+docker start ID
+xdg-open FILE_TO_OPEN
