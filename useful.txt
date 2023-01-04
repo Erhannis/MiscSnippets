@@ -108,6 +108,13 @@ readlink -f file.fil # get absolute path
 cat TODO.txt | sed "s/.*/before & after/"
 find -name 'pom.xml' | xargs sed -i s/\>Bouncy/\>Spongy/g
 find -type f -printf '"%p"\n' | xargs sed -i s/-Werror/-Wno-error/g
+xdg-open FILE
+cat /etc/NetworkManager/system-connections/NETWORK_NAME
+
+
+MongoDB
+----
+db.user_tbl.updateOne({"email":"june@gmail.com"},{$set:{"admin":true}})
 
 
 Fixes
@@ -115,12 +122,16 @@ Fixes
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 
 
-
 CSP
 ---
 Precedents
   Buffer distal channels
     ...Or, ensure the important process cannot be blocked by the less important process
+
+
+Git
+---
+git -c "user.name=Your Name" -c "user.email=Your email" commit -m
 
 
 Unsorted
@@ -141,3 +152,6 @@ docker search IMAGE
 docker create IMAGE
 docker start ID
 xdg-open FILE_TO_OPEN
+eog "`ls -atr | tail -n 1`"
+musicxml2ly -o - example.xml | lilypond --png -o asdf -
+QUIET 2>&1 | nl
