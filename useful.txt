@@ -15,18 +15,6 @@ ffmpeg -protocol_whitelist file,http,https,tcp,tls -i my_movie.m3u8 -c copy my_m
 
 
 
-gsettings set org.gnome.desktop.session idle-delay "uint32 3000"
-type FILE - show how bash interprets it (i.e., find location)
-find -exec cat {} \;
-find -exec sh -c 'echo -n "$0: " ; cat "$0" ; echo ' {} \;
-find -iname "*.mp4" -execdir ffmpeg -i {} -vf scale=iw*.25:ih*.25 ../resized/{} \;
-find -iname "*.jpg" -execdir convert {} -resize 20% ../new_jpg_resized/{} \;
-ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4   (mylist.txt: file /path/to/file3 \n file blah etc.)
-rename 's/(.*)/small_$1/' *
-dpkg -L PKG - show files in package
-dpkg -S FILE - show package containing file
-ln -s TARGET NEW_LINK_FILE - I KEEP FORGETTING THE ORDER
-convert -monitor -gravity NorthEast 'dirfrom/Sketchbook-8-1-*' -crop 3729x4928+0+0 dirto/Sketchbook-8-1-%02d.jpg
 jwplayer("player_holder").getConfig().file
 rtmpdump -r rtmp://198.27.85.197:1935/golive/?undefined/Stickaroo -o test.flv
 mvn dependency:get -DrepoUrl=something -Dartifact=group:artifact:version
@@ -80,6 +68,11 @@ async function checkBroken() {
 
 
 
+Android
+----
+Direct link to comment: https://play.google.com/store/ereview?docId=PACKAGE_ID
+
+
 Java
 ----
 javadoc - {@link #clearChars(char[])}
@@ -110,6 +103,19 @@ find -name 'pom.xml' | xargs sed -i s/\>Bouncy/\>Spongy/g
 find -type f -printf '"%p"\n' | xargs sed -i s/-Werror/-Wno-error/g
 xdg-open FILE
 cat /etc/NetworkManager/system-connections/NETWORK_NAME
+gsettings set org.gnome.desktop.session idle-delay "uint32 3000"
+type FILE - show how bash interprets it (i.e., find location)
+find -exec cat {} \;
+find -exec sh -c 'echo -n "$0: " ; cat "$0" ; echo ' {} \;
+find -iname "*.mp4" -execdir ffmpeg -i {} -vf scale=iw*.25:ih*.25 ../resized/{} \;
+find -iname "*.jpg" -execdir convert {} -resize 20% ../new_jpg_resized/{} \;
+ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4   (mylist.txt: file /path/to/file3 \n file blah etc.)
+rename 's/(.*)/small_$1/' *
+dpkg -L PKG - show files in package
+dpkg -S FILE - show package containing file
+ln -s TARGET NEW_LINK_FILE - I KEEP FORGETTING THE ORDER
+convert -monitor -gravity NorthEast 'dirfrom/Sketchbook-8-1-*' -crop 3729x4928+0+0 dirto/Sketchbook-8-1-%02d.jpg
+watch COMMAND //run command every 2 seconds (-n 2) and show output
 
 
 MongoDB
@@ -132,6 +138,8 @@ Precedents
 Git
 ---
 git -c "user.name=Your Name" -c "user.email=Your email" commit -m
+git update-server-info && cd .git && python -m http.server
+git log --name-only
 
 
 Unsorted
@@ -155,3 +163,5 @@ xdg-open FILE_TO_OPEN
 eog "`ls -atr | tail -n 1`"
 musicxml2ly -o - example.xml | lilypond --png -o asdf -
 QUIET 2>&1 | nl
+fuser FILE   # Show what's using FILE
+echo "0 0 0" >/sys/class/scsi_host/host<n>/scan
