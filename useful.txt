@@ -9,7 +9,7 @@ watch -n 0.1 cat /proc/sys/kernel/random/entropy_avail
 jarsigner -keystore ~/.android/debug.keystore -verbose unsigned.apk androiddebugkey
 avahi-browse -a -k
 amixer sset 'Capture',0 32000
-dpkg -S PROGRAM
+dpkg -S PROGRAM    # Search for a filename from installed packages.
 /var/log/dpkg.log
 ffmpeg -protocol_whitelist file,http,https,tcp,tls -i my_movie.m3u8 -c copy my_movie.ts
 
@@ -77,10 +77,17 @@ Java
 ----
 javadoc - {@link #clearChars(char[])}
 javadoc - {@link com.whatever.Classname#clearChars(char[])}
-update-java-alternatives
+#update-java-alternatives  # Prefer following:
+update-alternatives --config java
 jstack -l JAVA_PID // Dump threads
 mvn compile exec:java -Dexec.mainClass="com.baeldung.main.Exec"
+mvn install:install-file -Dfile=<path-to-file> -DgroupId=<group-id> -DartifactId=<artifact-id> -Dversion=<version> -Dpackaging=<packaging> -DgeneratePom=true
 java -cp . Main
+
+
+Flutter
+----
+Viewport errors?  Try wrapping every column and row in the tree ((above the offending node), (except the first)) in Expanded
 
 
 Cryptography
@@ -96,6 +103,7 @@ Bash
 mv `ls -tr | tail -n 3` ~/wherever/
 lsb_release -a
 cat /etc/os-release
+uname -r
 while true; do ./start.sh ; done
 readlink -f file.fil # get absolute path
 cat TODO.txt | sed "s/.*/before & after/"
@@ -115,7 +123,20 @@ dpkg -L PKG - show files in package
 dpkg -S FILE - show package containing file
 ln -s TARGET NEW_LINK_FILE - I KEEP FORGETTING THE ORDER
 convert -monitor -gravity NorthEast 'dirfrom/Sketchbook-8-1-*' -crop 3729x4928+0+0 dirto/Sketchbook-8-1-%02d.jpg
-watch COMMAND //run command every 2 seconds (-n 2) and show output
+watch COMMAND   # run command every 2 seconds (-n 2) and show output
+while true; do foo; sleep 2; done   # as above, but doesn't mangle the text output
+/usr/share/doc is where help/manuals are
+cat /proc/meminfo | grep Dirty
+nc -luk 0.0.0.0 PORT   # listen for all udp packets on PORT, don't bind to one sender
+iwlist wlp1s0 channel
+iw wlp1s0 info
+dpkg -r --force-depends "packagename"
+sudo checkinstall   # Install source as a new deb
+sudo ssh -i "/home/erhannis/secure-ish/default_keypair_000.pem" -R 14229:localhost:14229 ec2-user@ec2-18-237-58-79.us-west-2.compute.amazonaws.com
+socat tcp-listen:LISTENPORT,reuseaddr,fork tcp:DESTADDR:DESTPORT  # Forward port, listen locally
+sudo usermod -a -G $GROUP_TO_ADD $USERNAME ; newgrp $GROUP_TO_ADD  # Add user to a group
+realpath -s RELATIVE_PATH  # get absolute path, do not follow symlinks
+find . -type f -newermt "2024-01-01" ! -newermt "2024-02-01"
 
 
 MongoDB
@@ -140,11 +161,31 @@ Git
 git -c "user.name=Your Name" -c "user.email=Your email" commit -m
 git update-server-info && cd .git && python -m http.server
 git log --name-only
+git update-index --assume-unchanged <file>
+git update-index --no-assume-unchanged <file>
+git daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack --port=9418 --listen=127.0.0.1
+git submodule update --init --recursive
+git log -p --decorate | grep FOO
+
+
+KiCAD
+---
+pcbnew.py is at /var/lib/flatpak/app/org.kicad.KiCad/x86_64/stable/7147e825c62a8a94fe8891f17e7dc11fdff85bd0c59512e0d51641ab35eacae7/files/lib/python3.10/site-packages/
+plugins are at ~/.var/app/org.kicad.KiCad/data/kicad/7.0/3rdparty/plugins/
+
+Misc
+----
+easyeda2kicad --full --lcsc_id LCSC_ID_HERE
+ffmpeg -ss 00:00:00 -to 00:01:40 -i 20220122_015300.mp4 heater_problem.mp4
+youtube-dl -x --user-agent "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.103 Mobile Safari/537.36"
+
+Rust/RP2040
+----
+cargo objcopy --release --bin my_project -- -O ihex my_project.hex
 
 
 Unsorted
 ----
-ffmpeg -ss 00:00:00 -to 00:01:40 -i 20220122_015300.mp4 heater_problem.mp4
 gradle pg:test --info --tests org.spongycastle.gpg*
 mvn install:install-file \
     -Dfile=awesomeapp-1.0.1.jar \
@@ -165,3 +206,5 @@ musicxml2ly -o - example.xml | lilypond --png -o asdf -
 QUIET 2>&1 | nl
 fuser FILE   # Show what's using FILE
 echo "0 0 0" >/sys/class/scsi_host/host<n>/scan
+(ID >> 22) + 1288834974657 // Twitter id to timestamp
+nmcli device wifi connect NETWORK password PASSWORD
