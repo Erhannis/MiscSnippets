@@ -137,6 +137,8 @@ socat tcp-listen:LISTENPORT,reuseaddr,fork tcp:DESTADDR:DESTPORT  # Forward port
 sudo usermod -a -G $GROUP_TO_ADD $USERNAME ; newgrp $GROUP_TO_ADD  # Add user to a group
 realpath -s RELATIVE_PATH  # get absolute path, do not follow symlinks
 find . -type f -newermt "2024-01-01" ! -newermt "2024-02-01"
+usbhid-dump -s BUS:DEVICE -f -e stream
+find -L . -samefile path/to/foo.txt  # Find files that link to foo.txt
 
 
 MongoDB
@@ -208,3 +210,5 @@ fuser FILE   # Show what's using FILE
 echo "0 0 0" >/sys/class/scsi_host/host<n>/scan
 (ID >> 22) + 1288834974657 // Twitter id to timestamp
 nmcli device wifi connect NETWORK password PASSWORD
+cargo doc --open
+cargo tree
