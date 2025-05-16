@@ -139,6 +139,7 @@ realpath -s RELATIVE_PATH  # get absolute path, do not follow symlinks
 find . -type f -newermt "2024-01-01" ! -newermt "2024-02-01"
 usbhid-dump -s BUS:DEVICE -f -e stream
 find -L . -samefile path/to/foo.txt  # Find files that link to foo.txt
+xhost +local:  # "Authorization required, but no authorization protocol specified" "WARNING: Qt: could not connect to display :0"
 
 
 MongoDB
