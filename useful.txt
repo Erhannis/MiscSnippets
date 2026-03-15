@@ -117,6 +117,10 @@ find -exec cat {} \;
 find -exec sh -c 'echo -n "$0: " ; cat "$0" ; echo ' {} \;
 find -iname "*.mp4" -execdir ffmpeg -i {} -vf scale=iw*.25:ih*.25 ../resized/{} \;
 find -iname "*.jpg" -execdir convert {} -resize 20% ../new_jpg_resized/{} \;
+find . -type f -newermt "2024-01-01" ! -newermt "2024-02-01"
+find -L . -samefile path/to/foo.txt  # Find files that link to foo.txt
+find -iname "*.rs" -not -path "*/build/*"
+for i in *.wav; do ffmpeg -i "$i" "${i%.*}.mp3"; done
 ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4   (mylist.txt: file /path/to/file3 \n file blah etc.)
 rename 's/(.*)/small_$1/' *
 dpkg -L PKG - show files in package
@@ -136,9 +140,7 @@ sudo ssh -i "/home/erhannis/secure-ish/default_keypair_000.pem" -R 14229:localho
 socat tcp-listen:LISTENPORT,reuseaddr,fork tcp:DESTADDR:DESTPORT  # Forward port, listen locally
 sudo usermod -a -G $GROUP_TO_ADD $USERNAME ; newgrp $GROUP_TO_ADD  # Add user to a group
 realpath -s RELATIVE_PATH  # get absolute path, do not follow symlinks
-find . -type f -newermt "2024-01-01" ! -newermt "2024-02-01"
 usbhid-dump -s BUS:DEVICE -f -e stream
-find -L . -samefile path/to/foo.txt  # Find files that link to foo.txt
 xhost +local:  # "Authorization required, but no authorization protocol specified" "WARNING: Qt: could not connect to display :0"
 
 
@@ -182,9 +184,18 @@ easyeda2kicad --full --lcsc_id LCSC_ID_HERE
 ffmpeg -ss 00:00:00 -to 00:01:40 -i 20220122_015300.mp4 heater_problem.mp4
 youtube-dl -x --user-agent "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.103 Mobile Safari/537.36"
 
+
 Rust/RP2040
 ----
 cargo objcopy --release --bin my_project -- -O ihex my_project.hex
+
+
+Rust
+----
+cargo doc --open
+cargo tree
+cargo expand
+env_logger::Builder::from_default_env().filter(Some("erhannis_misc"), log::LevelFilter::Debug).filter(Some("mm_host"), log::LevelFilter::Debug).init();
 
 
 Unsorted
@@ -203,6 +214,7 @@ System.out.println(new BufferedReader(new InputStreamReader(Runtime.getRuntime()
 docker search IMAGE
 docker create IMAGE
 docker start ID
+docker exec -it CONTAINER /bin/bash
 xdg-open FILE_TO_OPEN
 eog "`ls -atr | tail -n 1`"
 musicxml2ly -o - example.xml | lilypond --png -o asdf -
@@ -211,5 +223,8 @@ fuser FILE   # Show what's using FILE
 echo "0 0 0" >/sys/class/scsi_host/host<n>/scan
 (ID >> 22) + 1288834974657 // Twitter id to timestamp
 nmcli device wifi connect NETWORK password PASSWORD
-cargo doc --open
-cargo tree
+GDK_BACKEND=x11 command
+Libreoffice sqlite: edit ~/.odbc.ini, start Base, open ODBC, select added source
+unar
+openssl pkcs12 -inkey 2key.pem -in 2key.pem -export -out 2key.pfx
+/home/erhannis/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp-elf-addr2line -e mm_firmware 0x4203f852 0x4203b835 0x403797c3 0x42037340 0x40379a29 0x40379e4f 0x4037a07e 0x4003fffe 0x4202afd0
