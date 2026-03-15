@@ -227,4 +227,4 @@ GDK_BACKEND=x11 command
 Libreoffice sqlite: edit ~/.odbc.ini, start Base, open ODBC, select added source
 unar
 openssl pkcs12 -inkey 2key.pem -in 2key.pem -export -out 2key.pfx
-/home/erhannis/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp-elf-addr2line -e mm_firmware 0x4203f852 0x4203b835 0x403797c3 0x42037340 0x40379a29 0x40379e4f 0x4037a07e 0x4003fffe 0x4202afd0
+/home/erhannis/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp-elf-addr2line -e ./target/xtensa-esp32s3-none-elf/debug/BINARY BACKTRACE
